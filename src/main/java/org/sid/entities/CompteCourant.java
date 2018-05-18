@@ -16,4 +16,12 @@ public class CompteCourant extends Compte{
         super(code, dateCreation, solde, client);
         this.decouvert = decouvert;
     }
+
+    public double getDecouvert() {
+        return decouvert;
+    }
+
+    public void setDecouvert(double decouvert) {
+        this.decouvert = decouvert;
+    }
 }

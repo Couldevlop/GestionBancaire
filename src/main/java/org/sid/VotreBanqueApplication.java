@@ -4,6 +4,7 @@ import org.sid.DAO.ClientRepository;
 import org.sid.DAO.CompteRepository;
 import org.sid.DAO.OperationRepository;
 import org.sid.entities.*;
+import org.sid.metier.IBanqueMetier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +20,8 @@ public class VotreBanqueApplication implements CommandLineRunner{
 	private CompteRepository compteRepository;
 	@Autowired
 	private OperationRepository operationRepository;
+	@Autowired
+	private IBanqueMetier iBanqueMetier;
 	public static void main(String[] args) {
 		SpringApplication.run(VotreBanqueApplication.class, args);
 	}
@@ -49,5 +52,11 @@ public class VotreBanqueApplication implements CommandLineRunner{
 		operationRepository.save(new Versement(new Date(), 30000, cp2));
 		operationRepository.save(new Versement(new Date(), 2000, cp2));
 		operationRepository.save(new Retrait(new Date(), 80000, cp2));
+
+
+		//---------------------- TESTS DES FONCTIONALITES METIERS---------------------
+
+		iBanqueMetier.Verser("C1",111111);
+		iBanqueMetier.consulterCompte("cp2");
 	}
 }
