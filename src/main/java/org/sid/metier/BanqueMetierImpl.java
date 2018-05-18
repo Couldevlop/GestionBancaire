@@ -27,7 +27,7 @@ public class BanqueMetierImpl implements IBanqueMetier {
     @Override
     public Optional<Compte> consulterCompte(String code) {
         Optional<Compte> cp=compteRepository.findById(code);
-       // if (cp ==null) throw new RuntimeException("Compte introuvable");
+        if (cp==null) throw new RuntimeException("Compte introuvable");
         return cp;
     }
 
